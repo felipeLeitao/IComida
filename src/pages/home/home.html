@@ -1,14 +1,26 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="danger">
     <ion-title>
-      Ionic Blank
+      IComida
     </ion-title>
   </ion-navbar>
+
+<ion-toolbar>
+    <ion-searchbar placeholder="Pesquisar.." [showCancelButton]="true"
+    [(ngModel)]="termoPesquisa" (input)="pesquisar()" >
+    </ion-searchbar>
+</ion-toolbar>
+
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+
+  <ion-list>
+    <button ion-item *ngFor="let produto of produtos | async">
+        <h2>{{produto.nome}}</h2>
+        <p>{{produto.valor}}</p>
+    </button>
+
+  </ion-list>
+
 </ion-content>
